@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 
 interface BtnProps {
   children: ReactNode;
+  htmlType?: "button" | "submit" | "reset" | undefined;
   disabled?: boolean;
   isLoading?: boolean;
   className?: string;
@@ -11,6 +12,7 @@ interface BtnProps {
 
 const PrimaryBtn: React.FC<BtnProps> = ({
   children,
+  htmlType,
   disabled,
   isLoading,
   onClickFxn,
@@ -24,6 +26,7 @@ const PrimaryBtn: React.FC<BtnProps> = ({
       disabled={disabled ? disabled : false}
       color="primary"
       type="primary"
+      htmlType={htmlType}
       shape="round"
       variant="filled"
       iconPosition="end"
