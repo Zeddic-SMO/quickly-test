@@ -23,8 +23,6 @@ const Profile = () => {
     retry: false,
   });
 
-  console.log(data);
-
   useEffect(() => {
     if (isError && (error as any)?.response?.status === 401) {
       logout();
