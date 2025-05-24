@@ -13,6 +13,8 @@ A modern React application built with **TypeScript**, **Vite**, **Tailwind CSS**
 ![Not_Found Page](image-1.png)
 - Responsive and accessible UI
 - **Skeleton Loaders** for improved user experience during data fetching, providing visual feedback while content is loading
+![Mobile Profile Page](image-5.png)
+![Mobile Login Page](image-6.png)
 ![Login Page Skeleton](image-3.png)
 ![Profile Page Skeleton](image-4.png)
 
