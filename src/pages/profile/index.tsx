@@ -5,6 +5,7 @@ import type { UserProfile } from "@interface/profile";
 import { message } from "antd";
 import ProfileDisplay from "./components/ProfileDisplay";
 import PaymentDateChecker from "./components/PaymentDateChecker";
+import CompanyActivity from "./components/CompanyActivity";
 
 const fetchUserProfile = async (): Promise<UserProfile> => {
   // Simulate API call with provided data
@@ -44,16 +45,17 @@ const Profile = () => {
       .finally(() => setLoading(false));
   }, []);
   return (
-    <div className="bg-[#f5f5f5] h-screen p-20">
+    <div className="bg-[#f5f5f5] p-20">
       <Header />
 
       <div className="flex mt-[3rem] gap-[2.5rem]">
-        <div className="w-full md:w-1/2">
+        <div className="w-full md:w-1/2 flex flex-col gap-[2.5rem]">
           {user && <ProfileDisplay user={user} />}
+          <PaymentDateChecker />
         </div>
 
-        <div className="w-full md:w-1/2">
-          <PaymentDateChecker />
+        <div className="w-full md:w-1/2 ">
+          <CompanyActivity />
         </div>
       </div>
     </div>
