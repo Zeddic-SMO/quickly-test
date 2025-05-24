@@ -3,7 +3,7 @@ import { Card } from "antd";
 
 const ProfileDisplay: React.FC<{ user: UserProfile }> = ({ user }) => {
   return (
-    <Card title="Profile">
+    <Card title="User Information">
       <div className="space-y-4">
         <div>
           <h6 className="text-[#748a84]">Name:</h6>
@@ -16,16 +16,6 @@ const ProfileDisplay: React.FC<{ user: UserProfile }> = ({ user }) => {
         <div>
           <h6 className="text-[#748a84]">Business Name:</h6>
           <p> {user.Company.name}</p>
-        </div>
-        <div>
-          <h6 className="text-[#748a84]">Company Activity:</h6>
-          <p>
-            {user.Company.address_line_1}
-            {user.Company.address_line_2 &&
-              `, ${user.Company.address_line_2}`}, {user.Company.address_city},{" "}
-            {user.Company.address_state}, {user.Company.address_zip},{" "}
-            {user.Company.address_country}
-          </p>
         </div>
       </div>
     </Card>

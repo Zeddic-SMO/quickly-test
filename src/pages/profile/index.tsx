@@ -45,11 +45,11 @@ const Profile = () => {
       .finally(() => setLoading(false));
   }, []);
   return (
-    <div className="bg-[#f5f5f5] p-20">
+    <div className="bg-[#f5f5f5] min-h-screen p-20">
       <Header />
 
       <div className="flex mt-[3rem] gap-[2.5rem]">
-        <div className="w-full md:w-1/2 flex flex-col gap-[2.5rem]">
+        <div className="w-full md:w-1/2 flex flex-col gap-[2.6rem]">
           {user && <ProfileDisplay user={user} />}
           <PaymentDateChecker />
         </div>
