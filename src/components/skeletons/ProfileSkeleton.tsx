@@ -12,7 +12,7 @@ const ProfileSkeleton = () => (
         <Skeleton.Input
           active
           size="small"
-          style={{ width: 120, height: 20, }}
+          style={{ width: 120, height: 20 }}
         />
       </div>
       <div className="flex gap-4 mt-4 md:mt-0">
@@ -29,7 +29,7 @@ const ProfileSkeleton = () => (
       </div>
     </div>
 
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 overflow-hidden">
       <div className="flex flex-col gap-8">
         <div className="bg-white rounded-lg shadow p-6">
           <Skeleton
@@ -60,7 +60,7 @@ const ProfileSkeleton = () => (
       </div>
 
       <div>
-        <div className="bg-white rounded-lg shadow p-6 h-full flex flex-col">
+        <div className="bg-white rounded-lg shadow p-6 h-full flex flex-col overflow-hidden">
           <div className="border-b pb-4 mb-4">
             <div className="flex gap-8">
               <Skeleton.Input active size="small" style={{ width: 80 }} />

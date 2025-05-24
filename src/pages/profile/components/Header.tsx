@@ -42,15 +42,16 @@ const Header: React.FC<HeaderProps> = ({ fullName, avatar }) => {
         <p className="text-[1.4rem] mt-2">Welcome Back!</p>
       </div>
       <div className="flex flex-col-reverse md:flex-row items-center gap-4">
-        <CustomTag
-          label="Approve bills"
-          icon={<LocationTick color="#171d1b" size={16} />}
-        />
-        <CustomTag
-          label="Pay"
-          icon={<WalletMoney color="#171d1b" size={16} />}
-          className="mr-8"
-        />
+        <div className="hidden md:flex items-center gap-4 mr-[2.5rem]">
+          <CustomTag
+            label="Approve bills"
+            icon={<LocationTick color="#171d1b" size={16} />}
+          />
+          <CustomTag
+            label="Pay"
+            icon={<WalletMoney color="#171d1b" size={16} />}
+          />
+        </div>
 
         <Dropdown menu={profileMenu} trigger={["hover"]}>
           <div className="flex items-center">

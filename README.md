@@ -13,6 +13,8 @@ A modern React application built with **TypeScript**, **Vite**, **Tailwind CSS**
 ![Not_Found Page](image-1.png)
 - Responsive and accessible UI
 - **Skeleton Loaders** for improved user experience during data fetching, providing visual feedback while content is loading
+![Mobile Profile Page](image-5.png)
+![Mobile Login Page](image-6.png)
 ![Login Page Skeleton](image-3.png)
 ![Profile Page Skeleton](image-4.png)
 
@@ -26,12 +28,13 @@ A modern React application built with **TypeScript**, **Vite**, **Tailwind CSS**
 - [**React Query**](https://tanstack.com/query/latest) – Powerful data fetching and caching for React
 - [**Axios**](https://axios-http.com/) – Promise-based HTTP client for API requests
 - [**Zustand**](https://zustand-demo.pmnd.rs/) – Lightweight state management for React
+- [**React-error-boundary**](https://github.com/bvaughn/react-error-boundary) – Simple reusable React error boundary component
 
 ## Getting Started
 
 1. **Clone the repository**
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/Zeddic-SMO/quickly-test
    cd test
    ```
 
