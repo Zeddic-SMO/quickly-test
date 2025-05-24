@@ -16,7 +16,7 @@ const NotFound = () => {
       </p>
       <div>
         <PrimaryBtn onClickFxn={() => navigate("/", { replace: true })}>
-          Back to Homepage
+          <span className="text-white">Back to Homepage</span>
         </PrimaryBtn>
       </div>
     </div>

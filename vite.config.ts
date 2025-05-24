@@ -12,7 +12,7 @@ export default defineConfig({
       "@components": resolve(__dirname, "src/components"),
       "@hooks": resolve(__dirname, "src/hooks"),
       "@pages": resolve(__dirname, "src/pages"),
-      "@types": resolve(__dirname, "src/types"),
+      "@interface": resolve(__dirname, "src/interface"),
       "@utils": resolve(__dirname, "src/utils"),
     },
   },
