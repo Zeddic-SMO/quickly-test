@@ -7,8 +7,14 @@ A modern React application built with **TypeScript**, **Vite**, **Tailwind CSS**
 - **Login Page** with validation and API integration
 ![Login page](image.png)
 - **Profile Page** displaying user information
+![Profile Page](image-2.png)
 - **Payment Date Checker** component for invoice and pay cycle calculations
+- **404 Page** that gracefully informs users when a requested page is not found
+![Not_Found Page](image-1.png)
 - Responsive and accessible UI
+- **Skeleton Loaders** for improved user experience during data fetching, providing visual feedback while content is loading
+![Login Page Skeleton](image-3.png)
+![Profile Page Skeleton](image-4.png)
 
 ## Technologies Used
 
