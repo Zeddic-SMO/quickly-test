@@ -9,8 +9,8 @@ const Profile = lazy(() => import("@pages/profile"));
 const NotFound = lazy(() => import("@pages/not_found"));
 
 const PrivateRoute = ({ children }: { children: JSX.Element }) => {
-  const user = useAuthStore((s) => s.user);
-  return user ? children : <Navigate to="/login" replace />;
+  const user = useAuthStore((s) => s.userToken);
+  return user ? children : <Navigate to="/" replace />;
 };
 
 const AppRoutes = () => {

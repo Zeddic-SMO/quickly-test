@@ -4,5 +4,7 @@ export interface LoginPayload {
 }
 
 export interface LoginResponse {
-  user: { email: string; token: string };
+  success: boolean;
+  message: string;
+  token: string;
 }

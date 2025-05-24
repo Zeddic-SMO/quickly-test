@@ -1,20 +1,15 @@
 import { create } from "zustand";
 
-interface User {
-  email: string;
-  token: string;
-}
-
 interface AuthState {
-  user: User | null;
-  setUser: (user: User | null) => void;
+  userToken: string | null;
+  setUserToken: (token: string | null) => void;
   logout: () => void;
 }
 
 export const useAuthStore = create<AuthState>(
   (set: (partial: Partial<AuthState>) => void) => ({
-    user: null,
-    setUser: (user: User | null): void => set({ user }),
-    logout: (): void => set({ user: null }),
+    userToken: null,
+    setUserToken: (token: string | null): void => set({ userToken: token }),
+    logout: (): void => set({ userToken: null }),
   })
 );
