@@ -31,7 +31,7 @@ A modern React application built with **TypeScript**, **Vite**, **Tailwind CSS**
 
 1. **Clone the repository**
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/Zeddic-SMO/quickly-test
    cd test
    ```
 

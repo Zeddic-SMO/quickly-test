@@ -1,17 +1,12 @@
 import LoginSkeleton from "@components/skeletons/LoginSkeleton";
 import useScrollToTop from "@hooks/useScrollToTop";
-import { useAuthStore } from "@store/useAuthStore";
-import { lazy, Suspense, type JSX } from "react";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { lazy, Suspense } from "react";
+import { Route, Routes } from "react-router-dom";
+import { PrivateRoute, PublicRoute } from "./RouteGuards";
 
 const Login = lazy(() => import("@pages/login"));
 const Profile = lazy(() => import("@pages/profile"));
 const NotFound = lazy(() => import("@pages/not_found"));
-
-const PrivateRoute = ({ children }: { children: JSX.Element }) => {
-  const user = useAuthStore((s) => s.userToken);
-  return user ? children : <Navigate to="/" replace />;
-};
 
 const AppRoutes = () => {
   useScrollToTop();
@@ -20,9 +15,11 @@ const AppRoutes = () => {
       <Route
         path="/"
         element={
-          <Suspense fallback={<LoginSkeleton />}>
-            <Login />
-          </Suspense>
+          <PublicRoute>
+            <Suspense fallback={<LoginSkeleton />}>
+              <Login />
+            </Suspense>
+          </PublicRoute>
         }
       />
       <Route
