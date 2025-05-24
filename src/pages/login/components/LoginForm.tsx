@@ -1,9 +1,36 @@
+import { loginApi } from "@api/authApi";
 import PrimaryBtn from "@components/buttons/PrimaryBtn";
+import type { LoginPayload, LoginResponse } from "@interface/auth.interface";
+import { useAuthStore } from "@store/useAuthStore";
+import { useMutation } from "@tanstack/react-query";
 import { emailValidator, passwordValidator } from "@utils/validators";
-import { Form, Input } from "antd";
+import { Alert, Form, Input, message } from "antd";
 import { Lock, Sms } from "iconsax-reactjs";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
+  const setUser = useAuthStore((s) => s.setUserToken);
+  const navigate = useNavigate();
+  const [error, setError] = useState<string | null>(null);
+
+  const mutation = useMutation<LoginResponse, any, LoginPayload>({
+    mutationFn: loginApi,
+    onSuccess: (data) => {
+      message.success(data.message);
+      setUser(data.token);
+      navigate("/profile");
+    },
+    onError: (err: any) => {
+      setError(err?.response?.data?.message || "Login failed");
+    },
+  });
+
+  const onFinish = (values: LoginPayload) => {
+    setError(null);
+    mutation.mutate(values);
+  };
+
   return (
     <div className="w-full h-screen flex flex-col items-center justify-center">
       <div className="w-[35rem] flex justify-center flex-col items-center">
@@ -20,7 +47,7 @@ const LoginForm = () => {
       </div>
 
       <div className="w-[35rem] mt-[2.5rem]">
-        <Form layout="vertical">
+        <Form layout="vertical" onFinish={onFinish}>
           <Form.Item name="email" rules={[{ validator: emailValidator }]}>
             <Input
               size="large"
@@ -28,6 +55,7 @@ const LoginForm = () => {
               id="test"
               placeholder="Email"
               className="rounded-[0.5rem] text-[1rem]"
+              onChange={() => error && setError(null)}
             />
           </Form.Item>
 
@@ -41,13 +69,20 @@ const LoginForm = () => {
               prefix={<Lock size={14} />}
               placeholder="Password"
               className="border-[1px] border-[#171d1b] rounded-[0.5rem] text-[1rem]"
+              onChange={() => error && setError(null)}
             />
           </Form.Item>
+
+          {error && (
+            <div className="mb-4">
+              <Alert type="error" message={error} showIcon />
+            </div>
+          )}
 
           <Form.Item>
             <PrimaryBtn
               htmlType="submit"
-              isLoading={false}
+              isLoading={mutation.isPending}
               className="w-full h-[4rem]"
             >
               <span className="text-white">Log In</span>
