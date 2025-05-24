@@ -28,6 +28,7 @@ A modern React application built with **TypeScript**, **Vite**, **Tailwind CSS**
 - [**React Query**](https://tanstack.com/query/latest) – Powerful data fetching and caching for React
 - [**Axios**](https://axios-http.com/) – Promise-based HTTP client for API requests
 - [**Zustand**](https://zustand-demo.pmnd.rs/) – Lightweight state management for React
+- [**React-error-boundary**](https://github.com/bvaughn/react-error-boundary) – Simple reusable React error boundary component
 
 ## Getting Started
 
