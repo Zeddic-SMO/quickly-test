@@ -5,6 +5,7 @@ A modern React application built with **TypeScript**, **Vite**, **Tailwind CSS**
 ## Features
 
 - **Login Page** with validation and API integration
+![Login page](image.png)
 - **Profile Page** displaying user information
 - **Payment Date Checker** component for invoice and pay cycle calculations
 - Responsive and accessible UI
