@@ -17,6 +17,10 @@ const ProfileDisplay: React.FC<{ user: UserProfile }> = ({ user }) => {
           <h6 className="text-[#748a84]">Business Name:</h6>
           <p> {user.Company.name}</p>
         </div>
+        <div>
+          <h6 className="text-[#748a84]">Company Expected Activity:</h6>
+          <p> {user.Company.expected_activity}</p>
+        </div>
       </div>
     </Card>
   );

@@ -1,16 +1,16 @@
 import Header from "./components/Header";
 
+import { fetchUserApi } from "@api/authApi";
 import ProfileDataError from "@components/errors/ProfileDataError";
-import PaymentDateChecker from "../../components/PaymentDateChecker";
-import ProfileSkeleton from "../../components/skeletons/ProfileSkeleton";
-import CompanyActivity from "./components/CompanyActivity";
-import ProfileDisplay from "./components/ProfileDisplay";
+import type { UserProfile } from "@interface/profile.interface";
 import { useAuthStore } from "@store/useAuthStore";
 import { useQuery } from "@tanstack/react-query";
-import { fetchUserApi } from "@api/authApi";
-import { useNavigate } from "react-router-dom";
-import type { UserProfile } from "@interface/profile.interface";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import PaymentDateChecker from "../../components/PaymentDateChecker";
+import ProfileSkeleton from "../../components/skeletons/ProfileSkeleton";
+import CompanyStatz from "./components/CompanyStatz";
+import ProfileDisplay from "./components/ProfileDisplay";
 
 const Profile = () => {
   const { userToken, logout } = useAuthStore();
@@ -43,7 +43,7 @@ const Profile = () => {
               <PaymentDateChecker />
             </div>
             <div className="w-full md:w-1/2 ">
-              <CompanyActivity />
+              <CompanyStatz />
             </div>
           </div>
         </>
