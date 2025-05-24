@@ -9,10 +9,10 @@ interface CustomTagProps {
 const CustomTag: React.FC<CustomTagProps> = ({ label, icon, className }) => {
   return (
     <span
-      className={`inline-flex items-center px-6 py-3 rounded-full bg-[#f5f5f5] shadow text-[#171d1b] font-medium text-[1.2rem] gap-2 ${className}`}
+      className={`inline-flex items-center px-6 py-3 rounded-full bg-[#748a84] shadow text-[#171d1b] font-medium text-[1.2rem] gap-2 ${className}`}
     >
-      {icon}
       {label}
+      {icon}
     </span>
   );
 };

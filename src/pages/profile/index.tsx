@@ -1,61 +1,47 @@
-import { useEffect, useState } from "react";
 import Header from "./components/Header";
 
 import ProfileDataError from "@components/errors/ProfileDataError";
-import type { UserProfile } from "@interface/profile.interface";
-import { message } from "antd";
-import CompanyActivity from "./components/CompanyActivity";
 import PaymentDateChecker from "../../components/PaymentDateChecker";
-import ProfileDisplay from "./components/ProfileDisplay";
 import ProfileSkeleton from "../../components/skeletons/ProfileSkeleton";
-
-const fetchUserProfile = async (): Promise<UserProfile> => {
-  // Simulate API call with provided data
-  return new Promise((resolve) =>
-    setTimeout(
-      () =>
-        resolve({
-          full_name: "Brendan Koch",
-          email: "brendan+dev@helloquickly.com",
-          phone: "4039888585",
-          roles: "approver",
-          verified: true,
-          Company: {
-            name: "B Co.",
-            address_line_1: "838 11 Ave SW",
-            address_line_2: "202",
-            address_city: "Calgary",
-            address_state: "Alberta",
-            address_zip: "T2R 0E5",
-            address_country: "Canada",
-            default_currency: "cad",
-          },
-        }),
-      1000
-    )
-  );
-};
+import CompanyActivity from "./components/CompanyActivity";
+import ProfileDisplay from "./components/ProfileDisplay";
+import { useAuthStore } from "@store/useAuthStore";
+import { useQuery } from "@tanstack/react-query";
+import { fetchUserApi } from "@api/authApi";
+import { useNavigate } from "react-router-dom";
+import type { UserProfile } from "@interface/profile.interface";
+import { useEffect } from "react";
 
 const Profile = () => {
-  const [user, setUser] = useState<UserProfile | null>(null);
-  const [loading, setLoading] = useState(true);
+  const { userToken, logout } = useAuthStore();
+  const navigate = useNavigate();
+
+  const { data, isLoading, isError, error } = useQuery<UserProfile>({
+    queryKey: ["userProfile"],
+    queryFn: () => fetchUserApi(userToken || ""),
+    enabled: !!userToken,
+    retry: false,
+  });
+
+  console.log(data);
 
   useEffect(() => {
-    fetchUserProfile()
-      .then(setUser)
-      .catch(() => message.error("Failed to load profile"))
-      .finally(() => setLoading(false));
-  }, []);
+    if (isError && (error as any)?.response?.status === 401) {
+      logout();
+      navigate("/login", { replace: true });
+    }
+  }, [isError, error]);
+
   return (
     <div className="bg-[#f5f5f5] min-h-screen p-4 md:p-20">
-      {loading ? (
+      {isLoading ? (
         <ProfileSkeleton />
-      ) : user ? (
+      ) : data ? (
         <>
-          <Header user={user} />
+          <Header fullName={data.full_name} avatar={data.avatar_url} />
           <div className="flex flex-col md:flex-row mt-[3rem] gap-[2.5rem]">
             <div className="w-full md:w-1/2 flex flex-col gap-[2.6rem]">
-              <ProfileDisplay user={user} />
+              <ProfileDisplay user={data} />
               <PaymentDateChecker />
             </div>
             <div className="w-full md:w-1/2 ">
@@ -64,7 +50,7 @@ const Profile = () => {
           </div>
         </>
       ) : (
-        <ProfileDataError />
+        isError ?? <ProfileDataError />
       )}
     </div>
   );
