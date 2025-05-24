@@ -1,5 +1,5 @@
 import CustomTag from "@components/CustomTag";
-import type { UserProfile } from "@interface/profile";
+import type { UserProfile } from "@interface/profile.interface";
 import { LocationTick, WalletMoney } from "iconsax-reactjs";
 
 const Header: React.FC<{ user: UserProfile }> = ({ user }) => {

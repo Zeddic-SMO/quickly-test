@@ -1,4 +1,4 @@
-import type { UserProfile } from "@interface/profile";
+import type { UserProfile } from "@interface/profile.interface";
 import { Card } from "antd";
 
 const ProfileDisplay: React.FC<{ user: UserProfile }> = ({ user }) => {

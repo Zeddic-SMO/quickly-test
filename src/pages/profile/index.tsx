@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Header from "./components/Header";
 
 import ProfileDataError from "@components/errors/ProfileDataError";
-import type { UserProfile } from "@interface/profile";
+import type { UserProfile } from "@interface/profile.interface";
 import { message } from "antd";
 import CompanyActivity from "./components/CompanyActivity";
 import PaymentDateChecker from "../../components/PaymentDateChecker";
